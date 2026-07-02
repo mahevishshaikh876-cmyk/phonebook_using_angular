@@ -1,0 +1,67 @@
+<div class="container">
+
+    <h1>PhoneBook</h1>
+
+    <div class="form">
+
+        <input type="text" placeholder="Enter Name" [(ngModel)]="name">
+
+        <input type="text" placeholder="Enter Number" [(ngModel)]="number">
+
+        <button (click)="addContact()">
+            {{ editIndex === null ? 'Add' : 'Update' }}
+        </button>
+
+    </div>
+
+    @if (contacts.length > 0) {
+
+    <table>
+
+        <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>Number</th>
+                <th>Action</th>
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            @for (contact of contacts; track $index) {
+
+            <tr>
+
+                <td>{{ contact.name }}</td>
+
+                <td>{{ contact.number }}</td>
+
+                <td>
+
+                    <button class="edit" (click)="editContact($index)">
+                        Edit
+                    </button>
+
+                    <button class="delete" (click)="deleteContact($index)">
+                        Delete
+                    </button>
+
+                </td>
+
+            </tr>
+
+            }
+
+        </tbody>
+
+    </table>
+
+    } @else {
+
+    <h3>No Contacts Added</h3>
+
+    }
+
+</div>
